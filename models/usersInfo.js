@@ -9,6 +9,17 @@ class usersInfo {
         callback(data);
      });
   }
+  find(data,callback)
+  {
+    this.collection.findOne({ email: data.email, password: data.password},(err, result)=> {
+      if (err) throw err;
+      if(result==null)
+      {
+
+      }
+      callback(result);
+    });
+  }
 
 }
 module.exports = usersInfo;

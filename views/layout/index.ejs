@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
+<body style="min-height:100vh;margin: 0;padding: 0; display: flex;flex-direction: column;">
     <header>
         <nav>
             <div class="nav-wrapper">
@@ -25,18 +25,18 @@
                     <li><a href="myPlants.html">MyPlants</a></li>
                     <li><a href="myPlan.html">MyPlan</a></li>
                     <li><a href="about.html">about</a></li>
-                    <li><a href="/register" class="waves-effect waves-light btn">Login<i class="material-icons right">cloud</i></a></li>
+                    <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons right">cloud</i></a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="grey lighten-4">
+    <main class="grey lighten-4" style="flex-grow: 1;">
 
         <%- include(`../${template}`) %>
     
     </main>
 
-      <footer class="page-footer">
+    <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col l4 s12"></div>
