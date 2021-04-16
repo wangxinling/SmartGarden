@@ -2,6 +2,7 @@ const db = require(`../models/index.js`);
 
 class TestController {
     
+  // check whether is a user logined
     login(req, res) {
       var sess = req.session;
       var loginUser = sess.loginUser;

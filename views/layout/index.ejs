@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Garden</title>
 
-    <!-- Compiled and minified CSS -->
     <!-- Materialze-->
+    <!-- Compiled from sass files for changing the theme colour  -->
     <link rel="stylesheet" href="materialize.css">
 
     <!-- Materialize icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
+<!-- this style for keep full screen -->
 <body style="min-height:100vh;margin: 0;padding: 0; display: flex;flex-direction: column;">
     <header>
         <nav>
@@ -25,6 +25,7 @@
                     <li><a href="myPlants.html">MyPlants</a></li>
                     <li><a href="myPlan.html">MyPlan</a></li>
                     <li><a href="/test">about</a></li>
+                    <!-- check login state to show different buttons -->
                     <% if (isLogined) { %>
                         <li><a href="/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">cloud</i></a></li>
                    <% }else{%> 

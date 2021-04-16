@@ -3,7 +3,7 @@ let app = express();
 let routes = require('./routes');
 let path = require('path');
 const bodyParser = require ('body-parser');
-const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");//work with session
 const session = require('express-session');
 
 var port = process.env.PORT || 8080;

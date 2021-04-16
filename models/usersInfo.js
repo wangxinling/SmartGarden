@@ -6,6 +6,7 @@ class usersInfo {
   }
   insert(data,callback)
   {
+    //TODO: Format data
     this.collection.insertOne(data, (err, result)=> {
         if (err) throw err;
         callback(result);
