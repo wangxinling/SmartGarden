@@ -1,3 +1,4 @@
+const ObjectId = require('mongodb').ObjectId;
 class usersInfo {
   constructor(dbo)
   {
@@ -5,18 +6,22 @@ class usersInfo {
   }
   insert(data,callback)
   {
-    this.collection.insertOne(data, function(err, result) {
-        callback(data);
+    this.collection.insertOne(data, (err, result)=> {
+        if (err) throw err;
+        callback(result);
      });
   }
   find(data,callback)
   {
     this.collection.findOne({ email: data.email, password: data.password},(err, result)=> {
       if (err) throw err;
-      if(result==null)
-      {
-
-      }
+      callback(result);
+    });
+  }
+  findByID(id,callback)
+  {
+    this.collection.findOne({_id:ObjectId(id)},(err, result)=> {
+      if (err) throw err;
       callback(result);
     });
   }
