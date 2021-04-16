@@ -1,6 +1,6 @@
 let express = require("express");
 let app = express();
-let routes = require('./routes')
+let routes = require('./routes');
 let path = require('path');
 const bodyParser = require ('body-parser');
 
@@ -10,6 +10,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
+
 
 // bodyParse setup
 app.use(bodyParser.urlencoded({extended: true}));
