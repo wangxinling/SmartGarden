@@ -10,9 +10,13 @@
     <!-- Materialze-->
     <!-- Compiled from sass files for changing the theme colour  -->
     <link rel="stylesheet" href="materialize.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
     <!-- Materialize icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <!-- this style for keep full screen -->
 <body style="min-height:100vh;margin: 0;padding: 0; display: flex;flex-direction: column;">
@@ -22,14 +26,14 @@
                 <a href="#" class="brand-logo">Logo</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="tips.html">Tips</a></li>
-                    <li><a href="myPlants.html">MyPlants</a></li>
+                    <li><a href="/plants">MyPlants</a></li>
                     <li><a href="myPlan.html">MyPlan</a></li>
                     <li><a href="/test">about</a></li>
                     <!-- check login state to show different buttons -->
                     <% if (isLogined) { %>
-                        <li><a href="/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">cloud</i></a></li>
+                        <li><a href="/logout" class="waves-effect waves-light btn">Logout<i class="material-icons right">logout</i></a></li>
                    <% }else{%> 
-                        <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons right">cloud</i></a></li>
+                        <li><a href="/login" class="waves-effect waves-light btn">Login<i class="material-icons right">login</i></a></li>
                     <% } %> 
                 </ul>
             </div>
@@ -40,7 +44,6 @@
         <%- include(`../${template}`) %>
     
     </main>
-
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -59,8 +62,6 @@
 
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 
 
 </body>

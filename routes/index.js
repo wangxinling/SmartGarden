@@ -4,6 +4,7 @@ const router = express.Router();
 const test = require('./test');
 const register = require('./register');
 const login = require('./login');
+const plants = require('./plants');
 
 module.exports = (params) => {
 
@@ -20,6 +21,7 @@ module.exports = (params) => {
     router.use('/test', test);
     router.use('/register', register);
     router.use('/login', login);
+    router.use('/plants',plants)
 
     return router;
 };

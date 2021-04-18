@@ -1,0 +1,78 @@
+<script>
+    // The modal initiation
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+  $(document).ready(function(){
+    $('#addPlantButton').click((e)=>{
+        // handle a click event to post an adding request
+        // TODO: More detail about plant
+        var name = document.getElementById('plantName').value;
+        var data = {
+            name
+        };
+        
+        $.post('/plants/add',data, (result) => {
+           if(result === 'success')
+           {
+                window.location.reload();
+           }
+        });
+    })
+  });
+</script>
+<div class="container">
+    <h1 class="title">My plants list</h1>
+
+    <div class="row">
+        <div class="row">
+
+            <div id="test1" class="col s12">
+            <% if (isLogined){
+                if(myPlantsList != null) {
+                     for (let i=0; i < myPlantsList.length; i++) { %> 
+
+                    <%- include('./plantCard',{i}) %>
+                 <% }
+                }else {%>
+                     <p> Please add your plants using add button.</p>
+                <%} 
+            } else {%>
+                <p> Please login your account.</p>
+            <%}%>  
+    
+            </div>
+
+        </div>
+        
+        
+        
+        <% if (isLogined){%> 
+        <!-- Modal Trigger -->
+        <div class="fixed-action-btn" style="bottom: 125px; right: 150 px;">
+            <a class="modal-trigger btn-floating btn-large waves-effect waves-light" id="addBtn" href="#addCardModal"><i class="material-icons">add</i></a>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="addCardModal" class="modal">
+            <div class="modal-content">
+                <h4>New plant</h4>
+                <p>Please provide plant name</p>
+                <div class="input-field col s12">
+                    <input  placeholder="Plant name" id="plantName" type="text" class="validate" required>
+                    <label for="plantName"> Name </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row center">
+                    <a id="addPlantButton" href="#!" class="modal-action modal-close waves-effect waves-light btn">Add</a>
+                </div>
+            </div>
+        </div>
+        <%}%>
+    </div>
+
+
+   
+</div>

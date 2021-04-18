@@ -1,20 +1,21 @@
 class userPlants {
     constructor(dbo)
     {
-      this.collection = dbo.collection("usersInfo");
+      this.collection = dbo.collection("userPlants");
     }
     insert(data,callback)
     {
-      this.collection.insertOne(data, function(err, result) {
-          callback(data);
+      this.collection.insertOne(data, (err, result)=> {
+          if (err) throw err;
+          callback(result);
        });
     }
-    getAll(data,callback)
+    async getAll(userID,callback)
     {
-      this.collection.find({ email: data.email, password: data.password},(err, result)=> {
-        if (err) throw err;
-        callback(result);
-      });
+      let plantsList = await this.collection.find({ userID: userID}).toArray();
+
+      callback(plantsList);
+
     }
   
   }
