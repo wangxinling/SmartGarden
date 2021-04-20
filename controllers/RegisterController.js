@@ -12,7 +12,7 @@ class RegisterController {
           let name = result.first_name +" "+ result.last_name;
           req.session.loginUser = name;
           req.session.userID = result._id;
-          res.render("layout/index",{template: 'Test',isLogined: true,user_name: name}); //TODO: jump to home page			
+          res.render("layout/index",{template: 'home',isLogined: true,user_name: name}); 
         });
       });
     }

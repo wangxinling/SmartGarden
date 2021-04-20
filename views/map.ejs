@@ -1,0 +1,40 @@
+
+<script>
+    
+    function getLocation() {
+        var x = document.getElementById("demo");
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        
+        var data = {};
+        data.latitude = position.coords.latitude;
+        data.longitude = position.coords.longitude;
+        $.post('/map/save',data, (result) => {
+            var x = document.getElementById("demo");
+            if(result === 'success')
+            {
+                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude;
+            }
+            else
+            {
+                x.innerHTML = "Please login your account.";
+            }
+        });
+    }
+</script>
+<div class="container">
+    <h1 class="title">Set your location</h1>
+    <p>Click the button to get your coordinates. This will optimize your water plan.</p>
+    <a onclick="getLocation()" class="waves-effect waves-light btn">Get Location<i class="material-icons right">location_on</i></a>
+    
+    <p id="demo"></p>
+</div>
+
+        
