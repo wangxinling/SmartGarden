@@ -5,6 +5,7 @@ const test = require('./test');
 const register = require('./register');
 const login = require('./login');
 const plants = require('./plants');
+const map = require('./map');
 
 module.exports = (params) => {
 
@@ -13,7 +14,7 @@ module.exports = (params) => {
                 var loginUser = sess.loginUser;
                 var isLogined = !!loginUser;
                 res.render('layout', {
-                    template: 'home',isLogined :false
+                    template: 'home',isLogined
                 })
                 next();
                 }
@@ -21,7 +22,8 @@ module.exports = (params) => {
     router.use('/test', test);
     router.use('/register', register);
     router.use('/login', login);
-    router.use('/plants',plants)
+    router.use('/plants',plants);
+    router.use('/map', map);
 
     return router;
 };

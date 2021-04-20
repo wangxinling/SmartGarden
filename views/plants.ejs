@@ -19,7 +19,55 @@
                 window.location.reload();
            }
         });
-    })
+    });
+    $('.podCard').click( (e) => {
+        let el=e.currentTarget.attributes;
+        // console.log(el.data.value)
+
+        let plantID = el.data.value;
+
+            data = {
+                plantID
+            }
+        $.post('/plants/delete',data, (result) => {
+            if(result === 'success')
+            {
+                window.location.reload();
+            }
+        });
+    });
+    $('.donePlantButton').click( (e) => {
+        let el=e.currentTarget.attributes;
+        // console.log(el.data.value)
+
+        let plantID = el.data.value;
+
+            data = {
+                plantID
+            }
+        $.post('/plants/done',data, (result) => {
+            if(result === 'success')
+            {
+                window.location.reload();
+            }
+        });
+    });
+    $('.laterPlantButton').click( (e) => {
+        let el=e.currentTarget.attributes;
+        // console.log(el.data.value)
+
+        let plantID = el.data.value;
+
+            data = {
+                plantID
+            }
+        $.post('/plants/later',data, (result) => {
+            if(result === 'success')
+            {
+                window.location.reload();
+            }
+        });
+    });
   });
 </script>
 <div class="container">

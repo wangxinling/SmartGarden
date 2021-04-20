@@ -6,7 +6,7 @@
     <div class="card-stacked">
         <div class="card-content">
             <!-- <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span> -->
-            <a class="btn-floating right waves-effect waves-light red"> <i class="material-icons right">close</i></a>
+            <a class="podCard btn-floating right waves-effect waves-light red" data="<%= myPlantsList[i]._id %>"> <i class="material-icons right">close</i></a>
             <div class="col s12">
                 <div class="row">
                     <div class="col s2 ">
@@ -23,7 +23,7 @@
                         <span > Last water time:</span>
                     </div>
                     <div class="col s6">
-                        <span> <b><%= myPlantsList[i].name %></b>
+                        <span> <b><%= myPlantsList[i].lastTime %></b>
                         </span>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         <span > Next water time:</span>
                     </div>
                     <div class="col s6">
-                        <span> <b><%= myPlantsList[i].name %></b>
+                        <span> <b><%= myPlantsList[i].nextTime %></b>
                         </span>
                     </div>
                 </div>
@@ -41,8 +41,8 @@
             
         </div>
         <div class="card-action">
-            <a id="donePlantButton" href="#!" class=" waves-effect waves-light btn">Done</a>
-            <a id="laterPlantButton" href="#!" class=" waves-effect waves-light recordButton right">Later</a>
+            <a class="donePlantButton waves-effect waves-light btn" data="<%= myPlantsList[i]._id %>">Done</a>
+            <a class="laterPlantButton waves-effect waves-light recordButton right" data="<%= myPlantsList[i]._id %>">Later</a>
         </div>
     </div>
 </div>
