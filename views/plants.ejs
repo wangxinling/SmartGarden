@@ -57,16 +57,25 @@
         <!-- Modal Structure -->
         <div id="addCardModal" class="modal">
             <div class="modal-content">
-                <h4>New plant</h4>
-                <p>Please provide plant name</p>
-                <div class="input-field col s12">
-                    <input  placeholder="Plant name" id="plantName" type="text" class="validate" required>
-                    <label for="plantName"> Name </label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="row center">
-                    <a id="addPlantButton" href="#!" class="modal-action modal-close waves-effect waves-light btn">Add</a>
+                    <div class="col offset-s3 s6 ">
+                    <h4 class="header">New plant</h4>
+                    <div class="card horizontal">
+                        <div class="card-image" style="height: 300px; width: 300px;">
+                            <img src="/assets/Iris.jpg" style="height: 100%; width: 100%; object-fit: contain">
+                        </div>
+                      <div class="card-stacked">
+                        <div class="card-content">
+                            <p>Please provide plant name</p>
+                            <div class="input-field col s12">
+                                <input  placeholder="Plant name" id="plantName" type="text" class="validate" required>
+                                <label for="plantName"> Name </label>
+                            </div>
+                            </div>
+                            <div class="card-action">
+                                <a id="addPlantButton" href="#!" class="modal-action modal-close waves-effect waves-light btn">Add</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
