@@ -14,8 +14,8 @@ module.exports = (params) => {
                 var loginUser = sess.loginUser;
                 var isLogined = !!loginUser;
                 res.render('layout', {
-                    template: 'home',isLogined
-                })
+                    template: 'home',isLogined,user_name:loginUser
+                });
                 next();
                 }
             );
@@ -24,6 +24,13 @@ module.exports = (params) => {
     router.use('/login', login);
     router.use('/plants',plants);
     router.use('/map', map);
-
+    router.use('/logout',  (req, res,next) => {
+        req.session.destroy()
+        res.render('layout', {
+            template: 'home',isLogined: false,user_name:null
+        });
+        next();
+        });
+    
     return router;
 };
