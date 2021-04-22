@@ -23,11 +23,11 @@ class userPlants {
       var myquery = { _id:ObjectId(data.plantID)};
       if(data.lastTime == null)
       {
-        var newvalues = { $set: {nextTime: data.nextTime } };
+        var newvalues = { $set: {nextTime: data.nextTime ,needNotify : true} };
       }
       else
       {
-        var newvalues = { $set: {lastTime: data.lastTime, nextTime: data.nextTime } };
+        var newvalues = { $set: {lastTime: data.lastTime, nextTime: data.nextTime,needNotify : data.needNotify } };
       }
       
       this.collection.updateOne(myquery, newvalues, function(err, result) {
@@ -46,6 +46,13 @@ class userPlants {
     findByID(id,callback)
     {
       this.collection.findOne({_id:ObjectId(id)},(err, result)=> {
+        if (err) throw err;
+        callback(result);
+      });
+    }
+    listAllData(callback)
+    {
+      this.collection.find({},(err, result)=> {
         if (err) throw err;
         callback(result);
       });

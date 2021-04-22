@@ -1,4 +1,5 @@
 const db = require(`../models/index.js`);
+var nodemailer = require('nodemailer');
 
 class PlantsController {
     // render page
@@ -26,6 +27,7 @@ class PlantsController {
       data.lastTime = date.toDateString();
       date.setDate(date.getDate() + 3);
       data.nextTime = date.toDateString();
+      data.needNotify = true;
       db.userPlants.insert(data,(result)=>{
         res.end('success');
       });
@@ -55,6 +57,7 @@ class PlantsController {
         update.lastTime = date.toDateString();
         date.setDate(date.getDate() + 3);
         update.nextTime = date.toDateString();
+        update.needNotify = true;
         db.userPlants.update(update,(result)=>{
           res.end('success');
         });
@@ -66,8 +69,8 @@ class PlantsController {
       var isLogined = !!sess.loginUser;
       if(isLogined)
       {
-        var date = new Date();
-        // add a day
+        
+        // add a day later
         var plantID =req.body.plantID;
         var update = {};
         update.plantID = plantID;
@@ -83,8 +86,57 @@ class PlantsController {
 
     notifyAll()
     {
-      //TODO: loop all userPlants and check the next water time and send email or other reminder method to user.
+      // loop all userPlants and check the next water time and send email or other reminder method to user.
+     
+      var transporter = nodemailer.createTransport({
+        service: 'deakin',
+        auth: {
+          user: 'wangxinli@deakin.edu.au',
+          pass: 'Liqianying17'
+        }
+      });
+      var nowDate = new Date();
+      db.userPlants.listAllData(result=>{
+        result.forEach(plant => {
+          var nextWaterTime = new Date(plant.nextTime);
+          // if(nextWaterTime > nowDate ) // Debug testing
+          if(nextWaterTime < nowDate )
+          {
+            //update DB information and set next water time
+            var nextDate = new Date();
+            plant.lastTime = plant.nextTime;
+            nextDate.setDate(nowDate.getDate() + 3);
+            plant.nextTime = nextDate.toDateString();
+            plant.needNotify = true;
+            db.userPlants.update(plant,(result)=>{
+              //do nothing
+            });
 
+            //TODO: the email send fail
+            //Send an email to user
+            db.usersInfo.findByID(plant.userID,userData=>{
+
+              var mailOptions = {
+                from: 'wangxinli@deakin.edu.au',
+                to: userData.email,
+                subject: 'Your plant need to be water',
+                text: 'It is time to water '+plant.name
+              };
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+            });
+            
+          };
+
+        });
+        
+      });
+     
     }
 }
 

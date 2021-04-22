@@ -11,6 +11,7 @@
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
     "mongodb": "^3.6.3",
+    "nodemailer": "^6.5.0",
     "nodemon": "^2.0.6"
   },
   "main": "server.js",

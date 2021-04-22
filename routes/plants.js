@@ -10,4 +10,6 @@ router.post("/delete", (req, res) => controller.delete(req, res));//delete a pla
 router.post("/done", (req, res) => controller.done(req, res));    //mark a water time in to list
 router.post("/later", (req, res) => controller.later(req, res));  //refresh reminder of water time
 
+setInterval(controller.notifyAll, 60000); // every minuter check one time all plants
+
 module.exports = router;
