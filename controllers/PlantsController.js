@@ -69,7 +69,7 @@ class PlantsController {
       var isLogined = !!sess.loginUser;
       if(isLogined)
       {
-        
+        var date = new Date();
         // add a day later
         var plantID =req.body.plantID;
         var update = {};
@@ -112,7 +112,7 @@ class PlantsController {
               //do nothing
             });
 
-            //TODO: the email send fail
+            //TODO: the email send fail. Here need a SMTP server.
             //Send an email to user
             db.usersInfo.findByID(plant.userID,userData=>{
 
