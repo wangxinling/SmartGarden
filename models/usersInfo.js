@@ -9,7 +9,7 @@ class usersInfo {
     //TODO: Format data
     this.collection.insertOne(data, (err, result)=> {
         if (err) throw err;
-        callback(result);
+        callback(result.ops[0]);
      });
   }
   find(data,callback)
